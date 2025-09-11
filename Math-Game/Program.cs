@@ -3,14 +3,14 @@
 Console.WriteLine("Please type your User Name :)");
 
 string name = Console.ReadLine();
-DateTime date = DateTime.UtcNow;
+DateTime date = DateTime.Now;
 
 Menu(name, date);
 
 void Menu(string name, DateTime date)
 {
     Console.WriteLine("---------------------------------------------");
-    Console.WriteLine($"Hello {name.ToUpper()}. It's {date}. This is your math's game. Keep improving everyday, never give up :)\n");
+    Console.WriteLine($"Hello {name.ToUpper()}. It's {date:HH:mm} on {date:dd.MM.yyyy}. This is your math game! Keep improving everyday, never give up :)\n");
     Console.WriteLine(@$"What game would you like to play today? Choose from the options below:
 A - Addition
 S - Subtraction
