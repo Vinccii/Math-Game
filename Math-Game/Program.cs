@@ -53,6 +53,21 @@ Q - Quit the program");
 void AdditionGame(string message)
 {
     Console.WriteLine(message);
+
+    Random random = new Random();
+    int firstNumber = random.Next(1, 9);
+    int secondNumber = random.Next(1, 9);
+
+    Console.WriteLine($"{firstNumber} + {secondNumber}");
+    string result = Console.ReadLine();
+
+    if(int.Parse(result) == firstNumber + secondNumber)
+    {
+        Console.WriteLine("correct!!");
+    } else
+    {
+        Console.WriteLine("incorrect :(");
+    }
 }
 
 void SubtractionGame(string message)
