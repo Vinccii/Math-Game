@@ -1,13 +1,17 @@
-﻿using System;
+﻿DateTime date = DateTime.Now;
 
-Console.WriteLine("Please type your User Name :)");
+string name = GetName();
 
-string name = Console.ReadLine();
-DateTime date = DateTime.Now;
+Menu(name);
 
-Menu(name, date);
+string GetName()
+{
+    Console.WriteLine("Please type your User Name :)");
+    string name = Console.ReadLine();
+    return name;
+}
 
-void Menu(string name, DateTime date)
+void Menu(string name)
 {
     Console.WriteLine("---------------------------------------------");
     Console.WriteLine($"Hello {name.ToUpper()}. It's {date:HH:mm} on {date:dd.MM.yyyy}. This is your math game! Keep improving everyday, never give up :)\n");
@@ -65,3 +69,5 @@ void DivisionGame(string message)
 {
     Console.WriteLine(message);
 }
+
+
