@@ -55,29 +55,91 @@ void AdditionGame(string message)
     Console.WriteLine(message);
 
     Random random = new Random();
-    int firstNumber = random.Next(1, 9);
-    int secondNumber = random.Next(1, 9);
+    int score = 0;
+    
+    int firstNumber;
+    int secondNumber;
 
-    Console.WriteLine($"{firstNumber} + {secondNumber}");
-    string result = Console.ReadLine();
+    for(int i = 0; i < 4; i++)
+    {
+        firstNumber = random.Next(1, 9);
+        secondNumber = random.Next(1, 9);
 
-    if(int.Parse(result) == firstNumber + secondNumber)
-    {
-        Console.WriteLine("correct!!");
-    } else
-    {
-        Console.WriteLine("incorrect :(");
+        Console.WriteLine($"{firstNumber} + {secondNumber}");
+        string result = Console.ReadLine();
+
+        if (int.Parse(result) == firstNumber + secondNumber)
+        {
+            Console.WriteLine("correct!!");
+            score++;
+        }
+        else
+        {
+            Console.WriteLine("incorrect :(");
+        }
+        if (i == 3) Console.WriteLine($"Game Over 😈. Your final score is {score}");
     }
 }
 
 void SubtractionGame(string message)
 {
     Console.WriteLine(message);
+
+    Random random = new Random();
+    int score = 0;
+
+    int firstNumber;
+    int secondNumber;
+
+    for (int i = 0; i < 4; i++)
+    {
+        firstNumber = random.Next(1, 9);
+        secondNumber = random.Next(1, 9);
+
+        Console.WriteLine($"{firstNumber} - {secondNumber}");
+        string result = Console.ReadLine();
+
+        if (int.Parse(result) == firstNumber - secondNumber)
+        {
+            Console.WriteLine("correct!!");
+            score++;
+        }
+        else
+        {
+            Console.WriteLine("incorrect :(");
+        }
+        if (i == 3) Console.WriteLine($"Game Over 😈. Your final score is {score}");
+    }
 }
 
 void MultiplicationGame(string message)
 {
     Console.WriteLine(message);
+    Random random = new Random();
+    int score = 0;
+
+    int firstNumber;
+    int secondNumber;
+
+    for (int i = 0; i < 4; i++)
+    {
+        firstNumber = random.Next(1, 9);
+        secondNumber = random.Next(1, 9);
+
+        Console.WriteLine($"{firstNumber} * {secondNumber}");
+        string result = Console.ReadLine();
+
+        if (int.Parse(result) == firstNumber * secondNumber)
+        {
+            Console.WriteLine("correct!!");
+            score++;
+        }
+        else
+        {
+            Console.WriteLine("incorrect :(");
+        }
+        if (i == 3) Console.WriteLine($"Game Over 😈. Your final score is {score}");
+    }
 }
 
 void DivisionGame(string message)
