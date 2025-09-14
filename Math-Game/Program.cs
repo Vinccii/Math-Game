@@ -51,8 +51,7 @@ void Menu(string name)
                 break;
             case "q":
                 Console.WriteLine("Goodbye");
-                GameOn = false;
-                Environment.Exit(0);
+                GameOn = false;                
                 break;
             default:
                 Console.WriteLine("Invalid Input");
@@ -94,9 +93,12 @@ void AdditionGame(string message)
         {
             Console.WriteLine("incorrect :(");
             Console.ReadLine();
-        }
-        if (i == 3) Console.WriteLine($"Game Over 😈. Your final score is {score}");
-    }
+        }       
+        if (i == 3)
+        {
+            Console.WriteLine($"Game Over 😈. Your final score is {score}. \nPress any key to go back to the main menu :)");           
+            Console.ReadLine(); 
+    }   }
 }
 
 void SubtractionGame(string message)
@@ -131,7 +133,11 @@ void SubtractionGame(string message)
             Console.WriteLine("incorrect :(");
             Console.ReadLine();
         }
-        if (i == 3) Console.WriteLine($"Game Over 😈. Your final score is {score}");
+        if (i == 3)
+        {
+            Console.WriteLine($"Game Over 😈. Your final score is {score}. \nPress any key to go back to the main menu :)");
+            Console.ReadLine();
+        }   
     }
 }
 
@@ -166,7 +172,11 @@ void MultiplicationGame(string message)
             Console.WriteLine("incorrect :(");
             Console.ReadLine();
         }
-        if (i == 3) Console.WriteLine($"Game Over 😈. Your final score is {score}");
+        if (i == 3)
+        {
+            Console.WriteLine($"Game Over 😈. Your final score is {score}. \nPress any key to go back to the main menu :)");
+            Console.ReadLine();
+        }
     }
 }
 
@@ -174,11 +184,11 @@ void DivisionGame(string message)
 {
     int score = 0;
 
-    for (int i =0; i < 4; i++)
+    for (int i = 0; i < 4; i++)
     {
         Console.Clear();
         Console.WriteLine(message);
-        
+
         int[] divisonNumbers = GetDivisionNumbers();
         int firstNumber = divisonNumbers[0];
         int secondNumber = divisonNumbers[1];
@@ -201,7 +211,11 @@ void DivisionGame(string message)
                 Console.ReadLine();
             }
         }
-        if (i == 3) Console.WriteLine($"Game Over 😈. Your final score is {score}");
+        if (i == 3)
+        {
+            Console.WriteLine($"Game Over 😈. Your final score is {score}. \nPress any key to go back to the main menu :)");
+            Console.ReadLine();
+        }        
     }
     
 }
