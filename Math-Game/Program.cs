@@ -1,4 +1,6 @@
-﻿DateTime date = DateTime.Now;
+﻿using static System.Formats.Asn1.AsnWriter;
+
+DateTime date = DateTime.Now;
 
 string name = GetName();
 
@@ -144,7 +146,58 @@ void MultiplicationGame(string message)
 
 void DivisionGame(string message)
 {
-    Console.WriteLine(message);
+    int score = 0;
+
+    for (int i =0; i < 4; i++)
+    {
+        Console.Clear();
+        Console.WriteLine(message);
+        
+        int[] divisonNumbers = GetDivisionNumbers();
+        int firstNumber = divisonNumbers[0];
+        int secondNumber = divisonNumbers[1];
+
+        Console.WriteLine($"{firstNumber} / {secondNumber}");
+        string result = Console.ReadLine();
+
+        if (int.TryParse(result, out int answer))
+        {
+            if (answer == firstNumber / secondNumber)
+
+            {
+                Console.WriteLine("correct!!. Press any Key to continue");
+                score++;
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine("incorrect :(. Press any Key to continue");
+                Console.ReadLine();
+            }
+        }
+        if (i == 3) Console.WriteLine($"Game Over 😈. Your final score is {score}");
+    }
+    
+}
+
+int[] GetDivisionNumbers()
+{
+    Random random = new Random();
+    int[]? result = new int[2];
+
+    int firstNumber = random.Next(0, 99);
+    int secondNumber = random.Next(0, 99);
+
+    while (firstNumber % secondNumber != 0)
+    {
+        firstNumber = random.Next(1, 99);
+        secondNumber = random.Next(1, 99);
+    }
+
+    return new int[] { firstNumber, secondNumber };
+    
+    Console.WriteLine(result);
+    return result;
 }
 
 
