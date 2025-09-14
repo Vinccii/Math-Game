@@ -1,4 +1,5 @@
-﻿using static System.Formats.Asn1.AsnWriter;
+﻿using System.Runtime.InteropServices;
+using static System.Formats.Asn1.AsnWriter;
 
 DateTime date = DateTime.Now;
 
@@ -17,39 +18,49 @@ void Menu(string name)
 {
     Console.WriteLine("---------------------------------------------");
     Console.WriteLine($"Hello {name.ToUpper()}. It's {date:HH:mm} on {date:dd.MM.yyyy}. This is your math game! Keep improving everyday, never give up :)\n");
-    Console.WriteLine(@$"What game would you like to play today? Choose from the options below:
-A - Addition
-S - Subtraction
-M - Multiplication
-D - Division
-Q - Quit the program");
-    Console.WriteLine("---------------------------------------------");
+    Console.WriteLine("\n");
 
-    string gameSelected = Console.ReadLine();
+    bool GameOn = true;
 
-    switch (gameSelected.Trim().ToLower())
+    do
     {
-        case "a":
-            AdditionGame("Addition selected");
-            break;
-        case "s":
-            SubtractionGame("Subtraction selected");
-            break;
-        case "m":
-            MultiplicationGame("Multiplication selected");
-            break;
-        case "d":
-            DivisionGame("Division selected");
-            break;
-        case "q":
-            Console.WriteLine("Goodbye");
-            Environment.Exit(0);
-            break;
-        default:
-            Console.WriteLine("Invalid Input");
-            Environment.Exit(0);
-            break;
-    }
+        Console.WriteLine(@$"What game would you like to play today? Choose from the options below:
+        
+        A - Addition
+        S - Subtraction
+        M - Multiplication
+        D - Division
+        Q - Quit the program");
+        Console.WriteLine("---------------------------------------------");
+
+        string gameSelected = Console.ReadLine();
+
+        switch (gameSelected.Trim().ToLower())
+        {
+            case "a":
+                AdditionGame("Addition selected");
+                break;
+            case "s":
+                SubtractionGame("Subtraction selected");
+                break;
+            case "m":
+                MultiplicationGame("Multiplication selected");
+                break;
+            case "d":
+                DivisionGame("Division selected");
+                break;
+            case "q":
+                Console.WriteLine("Goodbye");
+                GameOn = false;
+                Environment.Exit(0);
+                break;
+            default:
+                Console.WriteLine("Invalid Input");
+                Environment.Exit(0);
+                break;
+        }
+    } while (GameOn);
+    
 }
 
 void AdditionGame(string message)
@@ -67,6 +78,9 @@ void AdditionGame(string message)
         firstNumber = random.Next(1, 9);
         secondNumber = random.Next(1, 9);
 
+        Console.Clear();
+        Console.WriteLine(message);
+
         Console.WriteLine($"{firstNumber} + {secondNumber}");
         string result = Console.ReadLine();
 
@@ -74,10 +88,12 @@ void AdditionGame(string message)
         {
             Console.WriteLine("correct!!");
             score++;
+            Console.ReadLine();
         }
         else
         {
             Console.WriteLine("incorrect :(");
+            Console.ReadLine();
         }
         if (i == 3) Console.WriteLine($"Game Over 😈. Your final score is {score}");
     }
@@ -98,6 +114,9 @@ void SubtractionGame(string message)
         firstNumber = random.Next(1, 9);
         secondNumber = random.Next(1, 9);
 
+        Console.Clear();
+        Console.WriteLine(message);
+
         Console.WriteLine($"{firstNumber} - {secondNumber}");
         string result = Console.ReadLine();
 
@@ -105,10 +124,12 @@ void SubtractionGame(string message)
         {
             Console.WriteLine("correct!!");
             score++;
+            Console.ReadLine();
         }
         else
         {
             Console.WriteLine("incorrect :(");
+            Console.ReadLine();
         }
         if (i == 3) Console.WriteLine($"Game Over 😈. Your final score is {score}");
     }
@@ -128,6 +149,9 @@ void MultiplicationGame(string message)
         firstNumber = random.Next(1, 9);
         secondNumber = random.Next(1, 9);
 
+        Console.Clear();
+        Console.WriteLine(message);
+
         Console.WriteLine($"{firstNumber} * {secondNumber}");
         string result = Console.ReadLine();
 
@@ -135,10 +159,12 @@ void MultiplicationGame(string message)
         {
             Console.WriteLine("correct!!");
             score++;
+            Console.ReadLine();
         }
         else
         {
             Console.WriteLine("incorrect :(");
+            Console.ReadLine();
         }
         if (i == 3) Console.WriteLine($"Game Over 😈. Your final score is {score}");
     }
