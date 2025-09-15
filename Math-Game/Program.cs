@@ -3,6 +3,8 @@ using static System.Formats.Asn1.AsnWriter;
 
 DateTime date = DateTime.Now;
 
+List<string> games = new List<string>();
+
 string name = GetName();
 
 Menu(name);
@@ -30,6 +32,7 @@ void Menu(string name)
         S - Subtraction
         M - Multiplication
         D - Division
+        V - Game History
         Q - Quit the program");
         Console.WriteLine("---------------------------------------------");
 
@@ -49,6 +52,9 @@ void Menu(string name)
             case "d":
                 DivisionGame("Division selected");
                 break;
+            case "v":
+                OldGames();
+                break;
             case "q":
                 Console.WriteLine("Goodbye");
                 GameOn = false;                
@@ -62,17 +68,18 @@ void Menu(string name)
     
 }
 
+
 void AdditionGame(string message)
 {
     Console.WriteLine(message);
 
     Random random = new Random();
     int score = 0;
-    
+
     int firstNumber;
     int secondNumber;
 
-    for(int i = 0; i < 4; i++)
+    for (int i = 0; i < 4; i++)
     {
         firstNumber = random.Next(1, 9);
         secondNumber = random.Next(1, 9);
@@ -93,13 +100,17 @@ void AdditionGame(string message)
         {
             Console.WriteLine("incorrect :(");
             Console.ReadLine();
-        }       
+        }
         if (i == 3)
         {
-            Console.WriteLine($"Game Over 😈. Your final score is {score}. \nPress any key to go back to the main menu :)");           
-            Console.ReadLine(); 
-    }   }
+            Console.WriteLine($"Game Over 😈. Your final score is {score}. \nPress any key to go back to the main menu :)");
+            Console.ReadLine();
+        }
+    }
+
+    AddToHistory(score, "Addition");
 }
+
 
 void SubtractionGame(string message)
 {
@@ -139,6 +150,7 @@ void SubtractionGame(string message)
             Console.ReadLine();
         }   
     }
+    AddToHistory(score, "Substraction");
 }
 
 void MultiplicationGame(string message)
@@ -178,6 +190,7 @@ void MultiplicationGame(string message)
             Console.ReadLine();
         }
     }
+    AddToHistory(score, "Multiplication");
 }
 
 void DivisionGame(string message)
@@ -217,7 +230,7 @@ void DivisionGame(string message)
             Console.ReadLine();
         }        
     }
-    
+    AddToHistory(score, "Division");
 }
 
 int[] GetDivisionNumbers()
@@ -238,6 +251,25 @@ int[] GetDivisionNumbers()
     
     Console.WriteLine(result);
     return result;
+}
+
+void AddToHistory(int gameScore, string gameType)
+{
+    games.Add($"{DateTime.Now} - {gameType}: {gameScore} points.");
+}
+
+void OldGames()
+{
+    Console.Clear();
+    Console.WriteLine("History Of Games");
+    Console.WriteLine("---------------------------------------------");
+    foreach (string game in games)
+    {
+        Console.WriteLine(game);
+    }
+    Console.WriteLine("---------------------------------------------");
+    Console.WriteLine("Press any key to go back to the main menu :)");
+    Console.ReadLine();
 }
 
 
