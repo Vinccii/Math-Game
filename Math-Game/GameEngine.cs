@@ -23,7 +23,10 @@ namespace Math_Game
                 Console.WriteLine(message);
 
                 Console.WriteLine($"{firstNumber} + {secondNumber}");
+                
                 string result = Console.ReadLine();
+
+                result = Helpers.ResultValidation(result);          
 
                 if (int.Parse(result) == firstNumber + secondNumber)
                 {
@@ -64,8 +67,12 @@ namespace Math_Game
                 Console.Clear();
                 Console.WriteLine(message);
 
+
+
                 Console.WriteLine($"{firstNumber} - {secondNumber}");
                 string result = Console.ReadLine();
+
+                result = Helpers.ResultValidation(result);
 
                 if (int.Parse(result) == firstNumber - secondNumber)
                 {
@@ -84,7 +91,7 @@ namespace Math_Game
                     Console.ReadLine();
                 }
             }
-            Helpers.AddToHistory(score, GameType.Substraction);
+            Helpers.AddToHistory(score, GameType.Subtraction);
         }
 
         internal static void MultiplicationGame(string message)
@@ -106,6 +113,8 @@ namespace Math_Game
 
                 Console.WriteLine($"{firstNumber} * {secondNumber}");
                 string result = Console.ReadLine();
+
+                result = Helpers.ResultValidation(result);
 
                 if (int.Parse(result) == firstNumber * secondNumber)
                 {
@@ -142,6 +151,8 @@ namespace Math_Game
 
                 Console.WriteLine($"{firstNumber} / {secondNumber}");
                 string result = Console.ReadLine();
+
+                result = Helpers.ResultValidation(result);
 
                 if (int.TryParse(result, out int answer))
                 {
